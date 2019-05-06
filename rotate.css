@@ -3,14 +3,15 @@ html, body {
     padding: 0px;
 }
 
-.front {
+div {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-items: center;
     background-color: rgb(255, 220, 233);
+    transform: rotateX(200deg);
+    transform-style: preserve-3d;
 }
-
 .sp {
     width: 75%;
     display: flex;
@@ -29,19 +30,6 @@ html, body {
     padding: 4px;
 }
 
-.frontBox {
+.fa-square {
     font-size: 140px;
-}
-
-.btn {
-    font-size: 50px;
-    color: blue;
-}
-
-#all-btn {
-    text-align: center;
-}
-
-.selected {
-    background-color: rgb(136, 42, 42);
 }
