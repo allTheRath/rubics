@@ -1,3 +1,4 @@
+//hi
 // rubics cube::--
 // six sides:-
 // each side starts with same colors:-
