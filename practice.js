@@ -27,4 +27,14 @@ class Side {
 }
 
 let board1 = new Cube();
-console.log(board1);
+//console.log(board1.board[0][0]);
+
+let front = document.body.querySelector('.front');
+front.addEventListener('click', function(e) {
+
+});
+
+let direction = document.body.querySelector('#all-btn');
+direction.addEventListener('click', function(e) {
+
+});

@@ -1,28 +1,37 @@
 html, body {
     margin: 0px;
     padding: 0px;
+    height: 100%;
 }
 
 .front {
+    width: 54%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-items: center;
-    background-color: rgb(255, 220, 233);
 }
 
 .sp {
-    width: 75%;
+    width: 55%;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: center;
     margin: auto;
-    background-color: rgb(25, 199, 190);
+    background-color: rgb(202, 99, 51);
+    border-radius: 10px;
 }
 
-.sp:hover {
-    background-color: rgb(136, 42, 42);
+.front .box:hover {
+    background-color: rgba(38, 126, 129, 0.822);
+    border-radius: 12px;
+    width: 125px;
+    height: 142px;
+}
+
+.mainBox {
+    padding: 4px;
 }
 
 .box {
@@ -39,9 +48,56 @@ html, body {
 }
 
 #all-btn {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
     text-align: center;
 }
 
 .selected {
     background-color: rgb(136, 42, 42);
+}
+
+.boxes {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+.text {
+    font-size: 20px;
+    font-style: italic;
+    color: darkgreen;
+}
+
+main {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    background-color: rgba(76, 190, 48, 0.74);
+}
+
+.bottom {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+}
+
+.fa-angle-double-up:hover {
+    color: darkgreen;
+}
+
+.fa-angle-double-left:hover {
+    color: darkgreen;
+}
+
+.fa-angle-double-right:hover {
+    color: darkgreen;
+}
+
+.fa-angle-double-down:hover {
+    color: darkgreen;
 }
