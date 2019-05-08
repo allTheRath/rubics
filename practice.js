@@ -174,6 +174,124 @@ function getColor() {
     let allSides = [mainColors, leftColors, rightColors, topColors, bottomColors, rearColors];
     return allSides;
 }
+function removeClass() {
+    let temp = document.querySelectorAll('i');
+    temp.forEach((ele) => {
+        if(ele.classList.contains('r1')) {
+            ele.classList.remove('r1');
+        }
+        if(ele.classList.contains('r2')) {
+            ele.classList.remove('r2');
+        }
+        if(ele.classList.contains('r3')) {
+            ele.classList.remove('r3');
+        }
+        if(ele.classList.contains('c1')) {
+            ele.classList.remove('c1');
+        }
+        if(ele.classList.contains('c2')) {
+            ele.classList.remove('c2');
+        }
+        if(ele.classList.contains('c3')) {
+            ele.classList.remove('c3');
+        }
+    });
+}
+function addClass() {
+    let temp = document.querySelectorAll('i');
+    temp.forEach((ele) => {
+        if(ele.classList.contains('l1')) {
+            ele.classList.add('c1');
+            ele.classList.add('r1');
+        }
+        if(ele.classList.contains('l2')) {
+            ele.classList.add('c2');
+            ele.classList.add('r1');
+        }
+        if(ele.classList.contains('l3')) {
+            ele.classList.add('c3');
+            ele.classList.add('r1');
+        }
+        if(ele.classList.contains('l4')) {
+            ele.classList.add('c1');
+            ele.classList.add('r2');
+        }
+        if(ele.classList.contains('l5')) {
+            ele.classList.add('c2');
+            ele.classList.add('r2');
+        }
+        if(ele.classList.contains('l6')) {
+            ele.classList.add('c3');
+            ele.classList.add('r2');
+        }
+        if(ele.classList.contains('l7')) {
+            ele.classList.add('c1');
+            ele.classList.add('r3');
+        }
+        if(ele.classList.contains('l8')) {
+            ele.classList.add('c2');
+            ele.classList.add('r3');
+        }
+        if(ele.classList.contains('l9')) {
+            ele.classList.add('c3');
+            ele.classList.add('r3');
+        }
+    });
+}
+
+function updateAllSides(allSides, place, move) {
+    let array = [];
+    if(move == 'up') {
+// whatever clicked its acoording:-
+// if clicked on middle then just curcular shift for all middle colums
+// if right sided box clicked -- curcular shift for all right colums + row to reverse row as colums for the rightSide --: c1 - r3, c2 - r2, c3 - r1
+// if left sided box clicked --  curcular shift for all right colums + colums for left side --: c1 - r1, c2 - r2, c3 - r3..
+    // e.target contains c2 then its middle
+    // if c1 then left
+    // if c3 then right        
+        if(place == 'c1') {
+
+        }   else if(place == 'c2') {
+
+        }   else if(place == 'c3') {
+            
+        }
+
+
+
+
+    }   else if(move == 'left') {
+        if(place == 'c1') {
+
+        }   else if(place == 'c2') {
+
+        }   else if(place == 'c3') {
+            
+        }
+
+    }   else if(move == 'right') {
+        if(place == 'c1') {
+
+        }   else if(place == 'c2') {
+
+        }   else if(place == 'c3') {
+            
+        }   
+    }   else if(move == 'down') {
+        if(place == 'c1') {
+
+        }   else if(place == 'c2') {
+
+        }   else if(place == 'c3') {
+            
+        }
+    }
+    return array;
+
+    // all new colors
+}
+
+
 
 direction.addEventListener('click', function(e) {
 
@@ -204,26 +322,51 @@ direction.addEventListener('click', function(e) {
         4: 'b',
         5: 'rear',
     }
-    if(move === 'up') {
+// getting the position of clicked element-- below
+    
+    if(temp == true) {
+        let place = undefined;
+        if(e.target.classList.contains('c2')) {
+            place = 'middle';
+        }   else if(e.target.classList.contains('c1')) {
+            place = 'left';
+        }   else if(e.target.classList.contains('c3')) {
+            place = 'right';
+        }
+    }
+// on each move all six arrays will be updated
+    if(move === 'up' && temp) {
+        let a = updateAllSides(allSides, place, move);
+        updateColor(a);    
+        removeClass();
+        addClass();
 // whatever clicked its acoording:-
 // if clicked on middle then just curcular shift for all middle colums
 // if right sided box clicked -- curcular shift for all right colums + row to reverse row as colums for the rightSide --: c1 - r3, c2 - r2, c3 - r1
 // if left sided box clicked --  curcular shift for all right colums + colums for left side --: c1 - r1, c2 - r2, c3 - r3..
-
+    // e.target contains c2 then its middle
+    // if c1 then left
+    // if c3 then right        
     }
-    else if(move == 'down') {
-        
+    else if(move == 'down' && temp) {
+        let a = updateAllSides(allSides, place, move);    
+        updateColor(a);
+        removeClass();
+        addClass();
 // if clicked on middle inverse curcular shift
 // if clicked on right -- inverse curcular shift + 
     }
-    else if(move == 'left') {
-
+    else if(move == 'left' && temp) {
+        let a = updateAllSides(allSides, place, move);    
+        updateColor(a);
+        removeClass();
+        addClass();     
     }
-    else if(move == 'right') {
-
-
+    else if(move == 'right' && temp) {
+        let a = updateAllSides(allSides, place, move);    
+        updateColor(a);
+        removeClass();
+        addClass();
     }
-
-
-    click = false;
+   
 });
