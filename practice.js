@@ -30,7 +30,6 @@ class Side {
 }
 
 const board1 = new Cube();
-const front = document.body.querySelector('.front');
 const mainBoxes = document.querySelectorAll('.front i');
 mainBoxes.forEach((ele) => {
   ele.setAttribute('data-color', 'white');
@@ -85,48 +84,43 @@ rearBoxes.forEach((ele) => {
   });
 });
 
-front.addEventListener('click', function(e) {
-  console.log(e.target);
-  click = e.target;
-});
-
-const direction = document.body.querySelector('#all-btn');
-
 function updateColor(allColors) {
-  const mainColors = allColors[0];
-  const mainBoxes = document.querySelectorAll('.front i');
-  mainBoxes.forEach((ele, indx) => {
-    ele.setAttribute('data-color', mainColors[indx]);
-    ele.style.color = mainColors[indx];
-  });
+  if (allColors !== undefined) {
+    const mainColors = allColors[0];
+    const mainBoxes = document.querySelectorAll('.front i');
+    mainBoxes.forEach((ele, indx) => {
+      ele.setAttribute('data-color', mainColors[indx]);
+      ele.style.color = mainColors[indx];
+    });
 
-  const leftBoxes = document.querySelectorAll('.l i');
-  const leftColors = allColors[1];
-  leftBoxes.forEach((ele, indx) => {
-    ele.setAttribute('data-color', leftColors[indx]);
-    ele.style.color = leftColors[indx];
-  });
+    const leftBoxes = document.querySelectorAll('.l i');
+    const leftColors = allColors[1];
+    leftBoxes.forEach((ele, indx) => {
+      ele.setAttribute('data-color', leftColors[indx]);
+      ele.style.color = leftColors[indx];
+    });
 
-  const rightBoxes = document.querySelectorAll('.r i');
-  const rightColors = allColors[2];
-  rightBoxes.forEach((ele, indx) => {
-    ele.setAttribute('data-color', rightColors[indx]);
-    ele.style.color = rightColors[indx];
-  });
+    const rightBoxes = document.querySelectorAll('.r i');
+    const rightColors = allColors[2];
+    rightBoxes.forEach((ele, indx) => {
+      ele.setAttribute('data-color', rightColors[indx]);
+      ele.style.color = rightColors[indx];
+    });
 
-  const topBoxes = document.querySelectorAll('.t i');
-  const topColors = allColors[3];
-  topBoxes.forEach((ele, indx) => {
-    ele.setAttribute('data-color', topColors[indx]);
-    ele.style.color = topColors[indx];
-  });
+    const topBoxes = document.querySelectorAll('.t i');
+    const topColors = allColors[3];
+    topBoxes.forEach((ele, indx) => {
+      ele.setAttribute('data-color', topColors[indx]);
+      ele.style.color = topColors[indx];
+    });
 
-  const bottomBoxes = document.querySelectorAll('.b i');
-  const bottomColors = allColors[4];
-  bottomBoxes.forEach((ele, indx) => {
-    ele.setAttribute('data-color', bottomColors[indx]);
-    ele.style.color = bottomColors[indx];
-  });
+    const bottomBoxes = document.querySelectorAll('.b i');
+    const bottomColors = allColors[4];
+    bottomBoxes.forEach((ele, indx) => {
+      ele.setAttribute('data-color', bottomColors[indx]);
+      ele.style.color = bottomColors[indx];
+    });
+  }
 
   const rearBoxes = document.querySelectorAll('.rear i');
   const rearColors = allColors[5];
@@ -135,6 +129,7 @@ function updateColor(allColors) {
     ele.style.color = rearColors[indx];
   });
 }
+
 function getColor() {
   const mainColors = [];
   const mainBoxes = document.querySelectorAll('.front i');
@@ -169,9 +164,10 @@ function getColor() {
   const rearBoxes = document.querySelectorAll('.rear i');
   const rearColors = [];
   rearBoxes.forEach((ele) => {
-    rearBoxes.push(ele.getAttribute('data-color'));
+    rearColors.push(ele.getAttribute('data-color'));
   });
   const allSides = [mainColors, leftColors, rightColors, topColors, bottomColors, rearColors];
+  console.log(allSides);
   return allSides;
 }
 function removeClass() {
@@ -240,7 +236,14 @@ function addClass() {
 }
 
 function updateAllSides(allSides, place, move) {
-  const array = [];
+  const returning = allSides;
+  const j = {};
+  j['front'] = allSides[0];
+  j['left'] = allSides[1];
+  j['right'] = allSides[2];
+  j['top'] = allSides[3];
+  j['bottom'] = allSides[4];
+  j['rear'] = allSides[5];
   if (move == 'up') {
     // whatever clicked its acoording:-
     // if clicked on middle then just curcular shift for all middle colums
@@ -249,8 +252,38 @@ function updateAllSides(allSides, place, move) {
     // e.target contains c2 then its middle
     // if c1 then left
     // if c3 then right
+    console.log('up', place);
     if (place == 'c1') {
-
+      tempArr = [j.front[0], j.front[3], j.front[6]];
+      j.front[0] = j.bottom[0];
+      j.front[3] = j.bottom[3];
+      j.front[6] = j.bottom[6];
+      j.bottom[0] = j.rear[0];
+      j.bottom[3] = j.rear[3];
+      j.bottom[6] = j.rear[6];
+      j.rear[0] = j.top[0];
+      j.rear[3] = j.top[3];
+      j.rear[6] = j.top[6];
+      j.top[0] = tempArr[0];
+      j.top[3] = tempArr[1];
+      j.top[6] = tempArr[2];
+      tempArr = j.left;
+      j.left[0] = tempArr[2];
+      j.left[1] = tempArr[5];
+      j.left[2] = tempArr[8];
+      j.left[3] = tempArr[1];
+      j.left[4] = tempArr[4];
+      j.left[5] = tempArr[7];
+      j.left[6] = tempArr[0];
+      j.left[7] = tempArr[3];
+      j.left[8] = tempArr[6];
+      returning[0] = j['front'];
+      returning[1] = j['left'];
+      returning[2] = j['right'];
+      returning[3] = j['top'];
+      returning[4] = j['bottom'];
+      returning[5] = j['rear'];
+      console.log(returning, 'returning');
     } else if (place == 'c2') {
 
     } else if (place == 'c3') {
@@ -281,13 +314,18 @@ function updateAllSides(allSides, place, move) {
 
     }
   }
-  return array;
+  return returning;
 
   // all new colors
 }
-
-
-direction.addEventListener('click', function(e) {
+// prob-- eventlistner adding
+let eleClicked = undefined;
+document.body.querySelector('main').addEventListener('click', function(e) {
+  if (e.target.classList.contains('fa-square')) {
+    eleClicked = e.target;
+  }
+});
+document.body.addEventListener('click', function(e) {
   const dR = {
     'fa-angle-double-up': 'up',
     'fa-angle-double-left': 'left',
@@ -295,34 +333,33 @@ direction.addEventListener('click', function(e) {
     'fa-angle-double-down': 'down',
   };
   let move = undefined;
-  let temp = false;
-  for (const key in dR) {
+  let place = undefined;
+  let allSides = [];
+  for (key in dR) {
     if (e.target.classList.contains(key)) {
       move = dR[key];
-      temp = true;
+      console.log(move);
+      if (eleClicked.classList.contains('c2')) {
+        place = 'c2';
+      } else if (eleClicked.classList.contains('c1')) {
+        place = 'c1';
+      } else if (eleClicked.classList.contains('c3')) {
+        place = 'c3';
+      }
+      allSides = getColor();
+      console.log(place);
     }
-  }
-  let allSides = [];
-  if (temp == true) {
-    allSides = getColor();
   }
   // getting the position of clicked element-- below
-  let place = undefined;
-  if (temp == true) {
-    if (e.target.classList.contains('c2')) {
-      place = 'middle';
-    } else if (e.target.classList.contains('c1')) {
-      place = 'left';
-    } else if (e.target.classList.contains('c3')) {
-      place = 'right';
-    }
-  }
   // on each move all six arrays will be updated
-  if (move === 'up' && temp) {
+  if (move === 'up') {
     const a = updateAllSides(allSides, place, move);
-    updateColor(a);
-    removeClass();
-    addClass();
+    console.log(a);
+    if (a != undefined) {
+      updateColor(a);
+      removeClass();
+      addClass();
+    }
   }
   // whatever clicked its acoording:-
   // if clicked on middle then just curcular shift for all middle colums
@@ -332,24 +369,29 @@ direction.addEventListener('click', function(e) {
   // if c1 then left
   // if c3 then right
 
-  else if (move == 'down' && temp) {
+  else if (move == 'down') {
     const a = updateAllSides(allSides, place, move);
-    updateColor(a);
-    removeClass();
-    addClass();
+    if (a) {
+      updateColor(a != undefined);
+      removeClass();
+      addClass();
+    }
     // if clicked on middle inverse curcular shift
     // if clicked on right -- inverse curcular shift +
   }
-  else if (move == 'left' && temp) {
-    const a = updateAllSides(allSides, place, move);
-    updateColor(a);
-    removeClass();
-    addClass();
+  else if (move == 'left') {
+    if (a) {
+      updateColor(a != undefined);
+      removeClass();
+      addClass();
+    }
   }
-  else if (move == 'right' && temp) {
+  else if (move == 'right') {
     const a = updateAllSides(allSides, place, move);
-    updateColor(a);
-    removeClass();
-    addClass();
+    if (a != undefined) {
+      updateColor(a);
+      removeClass();
+      addClass();
+    }
   }
 });
