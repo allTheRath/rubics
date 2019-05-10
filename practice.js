@@ -418,20 +418,169 @@ function updateAllSides(allSides, place, row, move) {
       returning[5] = j['rear'];
     }
   } else if (move == 'right') {
-    if (place == 'c1') {
-
-    } else if (place == 'c2') {
-
-    } else if (place == 'c3') {
-
+    if (row == 'r1') {
+      let tempArr = [j.front[0], j.front[1], j.front[2]];
+      j.front[0] = j.left[0];
+      j.front[1] = j.left[1];
+      j.front[2] = j.left[2];
+      j.left[0] = j.rear[0];
+      j.left[1] = j.rear[1];
+      j.left[2] = j.rear[2];
+      j.rear[0] = j.right[0];
+      j.rear[1] = j.right[1];
+      j.rear[2] = j.right[2];
+      j.right[0] = tempArr[0];
+      j.right[1] = tempArr[1];
+      j.right[2] = tempArr[2];
+      tempArr = j.top;
+      j.top[0] = tempArr[2];
+      j.top[1] = tempArr[5];
+      j.top[2] = tempArr[8];
+      j.top[3] = tempArr[1];
+      j.top[4] = tempArr[4];
+      j.top[5] = tempArr[7];
+      j.top[6] = tempArr[0];
+      j.top[7] = tempArr[3];
+      j.top[8] = tempArr[6];
+      returning[0] = j['front'];
+      returning[1] = j['left'];
+      returning[2] = j['right'];
+      returning[3] = j['top'];
+      returning[4] = j['bottom'];
+      returning[5] = j['rear'];
+    } else if (row == 'r2') {
+      const tempArr = [j.front[3], j.front[4], j.front[5]];
+      j.front[3] = j.left[3];
+      j.front[4] = j.left[4];
+      j.front[5] = j.left[5];
+      j.left[3] = j.rear[3];
+      j.left[4] = j.rear[4];
+      j.left[5] = j.rear[5];
+      j.rear[3] = j.right[3];
+      j.rear[4] = j.right[4];
+      j.rear[5] = j.right[5];
+      j.right[3] = tempArr[0];
+      j.right[4] = tempArr[1];
+      j.right[5] = tempArr[2];
+      returning[0] = j['front'];
+      returning[1] = j['left'];
+      returning[2] = j['right'];
+      returning[3] = j['top'];
+      returning[4] = j['bottom'];
+      returning[5] = j['rear'];
+    } else if (row == 'r3') {
+      let tempArr = [j.front[6], j.front[7], j.front[8]];
+      j.front[6] = j.left[6];
+      j.front[7] = j.left[7];
+      j.front[8] = j.left[8];
+      j.left[6] = j.rear[6];
+      j.left[7] = j.rear[7];
+      j.left[8] = j.rear[8];
+      j.rear[6] = j.right[6];
+      j.rear[7] = j.right[7];
+      j.rear[8] = j.right[8];
+      j.right[6] = tempArr[0];
+      j.right[7] = tempArr[1];
+      j.right[8] = tempArr[2];
+      tempArr = j.bottom;
+      j.bottom[0] = tempArr[6];
+      j.bottom[1] = tempArr[3];
+      j.bottom[2] = tempArr[0];
+      j.bottom[3] = tempArr[7];
+      j.bottom[4] = tempArr[4];
+      j.bottom[5] = tempArr[1];
+      j.bottom[6] = tempArr[8];
+      j.bottom[7] = tempArr[5];
+      j.bottom[8] = tempArr[2];
+      returning[0] = j['front'];
+      returning[1] = j['left'];
+      returning[2] = j['right'];
+      returning[3] = j['top'];
+      returning[4] = j['bottom'];
+      returning[5] = j['rear'];
     }
   } else if (move == 'down') {
     if (place == 'c1') {
-
+      tempArr = [j.front[0], j.front[3], j.front[6]];
+      j.front[0] = j.top[0];
+      j.front[3] = j.top[3];
+      j.front[6] = j.top[6];
+      j.top[0] = j.rear[0];
+      j.top[3] = j.rear[3];
+      j.top[6] = j.rear[6];
+      j.rear[0] = j.bottom[0];
+      j.rear[3] = j.bottom[3];
+      j.rear[6] = j.bottom[6];
+      j.bottom[0] = tempArr[0];
+      j.bottom[3] = tempArr[1];
+      j.bottom[6] = tempArr[2];
+      tempArr = j.left;
+      j.left[0] = tempArr[6];
+      j.left[1] = tempArr[3];
+      j.left[2] = tempArr[0];
+      j.left[3] = tempArr[7];
+      j.left[4] = tempArr[4];
+      j.left[5] = tempArr[1];
+      j.left[6] = tempArr[8];
+      j.left[7] = tempArr[5];
+      j.left[8] = tempArr[2];
+      returning[0] = j['front'];
+      returning[1] = j['left'];
+      returning[2] = j['right'];
+      returning[3] = j['top'];
+      returning[4] = j['bottom'];
+      returning[5] = j['rear'];
+      console.log(returning, 'returning');
     } else if (place == 'c2') {
-
+      tempArr = [j.front[1], j.front[4], j.front[7]];
+      j.front[1] = j.top[1];
+      j.front[4] = j.top[4];
+      j.front[7] = j.top[7];
+      j.top[1] = j.rear[1];
+      j.top[4] = j.rear[4];
+      j.top[7] = j.rear[7];
+      j.rear[1] = j.bottom[1];
+      j.rear[4] = j.bottom[4];
+      j.rear[7] = j.bottom[7];
+      j.bottom[1] = tempArr[0];
+      j.bottom[4] = tempArr[1];
+      j.bottom[7] = tempArr[2];
+      returning[0] = j['front'];
+      returning[1] = j['left'];
+      returning[2] = j['right'];
+      returning[3] = j['top'];
+      returning[4] = j['bottom'];
+      returning[5] = j['rear'];
     } else if (place == 'c3') {
-
+      tempArr = [j.front[2], j.front[5], j.front[8]];
+      j.front[2] = j.top[2];
+      j.front[5] = j.top[5];
+      j.front[8] = j.top[8];
+      j.top[2] = j.rear[2];
+      j.top[5] = j.rear[5];
+      j.top[8] = j.rear[8];
+      j.rear[2] = j.bottom[2];
+      j.rear[5] = j.bottom[5];
+      j.rear[8] = j.bottom[8];
+      j.bottom[2] = tempArr[0];
+      j.bottom[5] = tempArr[1];
+      j.bottom[8] = tempArr[2];
+      tempArr = j.right;
+      j.right[0] = tempArr[2];
+      j.right[1] = tempArr[5];
+      j.right[2] = tempArr[8];
+      j.right[3] = tempArr[1];
+      j.right[4] = tempArr[4];
+      j.right[5] = tempArr[7];
+      j.right[6] = tempArr[0];
+      j.right[7] = tempArr[3];
+      j.right[8] = tempArr[6];
+      returning[0] = j['front'];
+      returning[1] = j['left'];
+      returning[2] = j['right'];
+      returning[3] = j['top'];
+      returning[4] = j['bottom'];
+      returning[5] = j['rear'];
     }
   }
   return returning;
