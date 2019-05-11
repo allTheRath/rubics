@@ -5,7 +5,7 @@ html, body {
 }
 
 .front {
-    width: 54%;
+    width: 54vw;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
