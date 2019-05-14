@@ -101,3 +101,53 @@ main {
 .fa-angle-double-down:hover {
     color: rgb(12, 138, 223);
 }
+
+
+@media screen and (max-width: 600px) {
+    .front {
+        width: 54vw;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-items: center;
+    }
+    
+    .sp {
+        width: 55%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: center;
+        margin: auto;
+        background-color: rgb(202, 99, 51);
+        border-radius: 3px;
+    }
+    
+    .front .box:hover {
+        background-color: rgba(38, 126, 129, 0.822);
+        border-radius: 2px;
+    }
+    
+    .frontBox {
+        font-size: 14px;
+    }
+    
+    .btn {
+        font-size: 5px;
+        color: blue;
+    }
+
+    .text {
+        font-size: 4px;
+        font-style: italic;
+        color: rgba(13, 1, 65, 0.932);
+    }
+}
+
+.newGame {
+    text-align: center;
+    background-color: rgb(233, 233, 233);
+    color: green;
+    width: 100px;
+    height: 30px;
+}

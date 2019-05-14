@@ -673,3 +673,55 @@ document.body.addEventListener('click', function(e) {
     }
   }
 });
+
+document.body.addEventListener('click', function(e) {
+  if (e.target.classList.contains('newGame')) {
+    let n = (Math.random() * 40);
+    while (n > 0) {
+      n--;
+      const allMove = ['up', 'down', 'left', 'right'];
+      const allPlace = ['c1', 'c2', 'c3'];
+      const allRow = ['r1', 'r2', 'r3'];
+      let temp = Math.floor(Math.random() * 4);
+      const move = allMove[temp];
+      temp = Math.floor(Math.random() * 3);
+      const place = allPlace[temp];
+      temp = Math.floor(Math.random() * 3);
+      const row = allRow[temp];
+      const allSides = getColor();
+      if (move === 'up') {
+        const a = updateAllSides(allSides, place, row, move);
+        console.log(a);
+        if (a != undefined) {
+          updateColor(a);
+          removeClass();
+          addClass();
+        }
+      }
+      else if (move == 'down') {
+        const a = updateAllSides(allSides, place, row, move);
+        if (a != undefined) {
+          updateColor(a);
+          removeClass();
+          addClass();
+        }
+      }
+      else if (move == 'left') {
+        const a = updateAllSides(allSides, place, row, move);
+        if (a != undefined) {
+          updateColor(a);
+          removeClass();
+          addClass();
+        }
+      }
+      else if (move == 'right') {
+        const a = updateAllSides(allSides, place, row, move);
+        if (a != undefined) {
+          updateColor(a);
+          removeClass();
+          addClass();
+        }
+      }
+    }
+  }
+});
