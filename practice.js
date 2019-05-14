@@ -722,6 +722,25 @@ document.body.addEventListener('click', function(e) {
           addClass();
         }
       }
+      console.log(place, row, move);
+    }
+  }
+});
+document.body.addEventListener('click', function(e) {
+  if (e.target.classList.contains == 'buttons') {
+    const allColors = getColor();
+    let count = 0;
+    for (let i = 0; i < allColors.length; i++) {
+      const temp = allColors[0];
+      const val = temp[0];
+      for (let i = 1; i < temp.length; i++) {
+        if (temp[i] == val) {
+          count++;
+        }
+      }
+    }
+    if (count == allColors.length) {
+      alert('You have won this game!');
     }
   }
 });
