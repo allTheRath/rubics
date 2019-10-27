@@ -13,5 +13,8 @@ Goal is to Make every side with one color.
 
    [Play!](https://alltherath.github.io/rubics/)
 
+## Images!
+   
+# [![Home - Desktop View](/rubics-home.PNG)](https://alltherath.github.io/rubics/)
 
 
