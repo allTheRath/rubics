@@ -10,8 +10,8 @@ Instructions For The Game:
 Every side is displayed on right side with lables for it.
 Goal is to Make every side with one color.
 
-```bash
+
    [Play!](https://alltherath.github.io/rubics/)
 
-```
+
 
